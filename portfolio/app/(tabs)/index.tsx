@@ -1,98 +1,97 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { Link } from 'expo-router';
 
-export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
-  );
+export default function Hero() {
+return (
+<View style={styles.container}>
+{/* Icones decorativos */}
+<Image
+source={require('../../assets/icons/Godot.png')}
+style={[styles.icon, styles.iconTopLeft]}
+/>
+<Image
+source={require('../../assets/icons/Godot.png')}
+style={[styles.icon, styles.iconBottomRight]}
+/>
+<Image
+source={require('../../assets/icons/Asesprite.png')}
+style={[styles.icon, styles.iconRight]}
+/>
+<Image
+source={require('../../assets/icons/VSCODE.png')}
+style={[styles.icon, styles.iconBottomLeft]}
+/>
+
+
+{/* Texto principal */}
+<Text style={styles.title}>Leandro Lima</Text>
+<Text style={styles.subtitle}>Desenvolvedor de jogos digitais | <Text style={styles.bold}>Godot</Text></Text>
+<Text style={styles.subtitle}>Artista de pixelart | <Text style={styles.bold}>Asesprite</Text></Text>
+
+
+{/* Botão */}
+<Link href="/forca" asChild>
+<TouchableOpacity style={styles.button}>
+<Text style={styles.buttonText}>Jogar Forca 🎮</Text>
+</TouchableOpacity>
+</Link>
+</View>
+);
 }
 
+
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+container: {
+flex: 1,
+justifyContent: 'center',
+alignItems: 'center',
+backgroundColor: '#f5f5f5',
+},
+icon: {
+position: 'absolute',
+width: 60,
+height: 60,
+opacity: 0.2,
+},
+iconTopLeft: {
+top: 120,
+left: 100,
+},
+iconBottomRight: {
+bottom: 120,
+right: 80,
+},
+iconRight: {
+top: '33%',
+right: '25%',
+opacity: 0.8,
+},
+iconBottomLeft: {
+bottom: 80,
+left: '25%',
+},
+title: {
+fontSize: 32,
+fontWeight: 'bold',
+},
+subtitle: {
+fontSize: 18,
+color: '#555',
+marginTop: 6,
+},
+bold: {
+fontWeight: 'bold',
+},
+button: {
+backgroundColor: '#555',
+paddingVertical: 12,
+paddingHorizontal: 24,
+borderRadius: 10,
+marginTop: 16,
+},
+buttonText: {
+color: 'white',
+fontSize: 18,
+},
 });
