@@ -2,7 +2,7 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 
 import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
+import { Ionicons } from "@expo/vector-icons";
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
@@ -20,42 +20,58 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color, size = 28 }) => (
+            <Ionicons name="home-outline" size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="about"
         options={{
           title: "Sobre",
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color, size = 28 }) => (
+            <Ionicons name="information-circle-outline" size={size} color={color} />
+          ),
         }}
       />
+
       <Tabs.Screen
         name="academic"
         options={{
-          title: 'Academica',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'Acadêmica',
+          tabBarIcon: ({ color, size = 28 }) => (
+            <Ionicons name="school-outline" size={size} color={color} />
+          ),
         }}
       />
+
       <Tabs.Screen
         name="experience"
         options={{
           title: 'Experiência',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color, size = 28 }) => (
+            <Ionicons name="briefcase-outline" size={size} color={color} />
+          ),
         }}
       />
+
       <Tabs.Screen
         name="projects"
         options={{
-          title: 'projetos',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'Projetos',
+          tabBarIcon: ({ color, size = 28 }) => (
+            <Ionicons name="layers-outline" size={size} color={color} />
+          ),
         }}
       />
+
       <Tabs.Screen
         name="forca"
         options={{
           title: 'Forca',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color, size = 28 }) => (
+            <Ionicons name="game-controller-outline" size={size} color={color} />
+          ),
         }}
       />
     </Tabs>

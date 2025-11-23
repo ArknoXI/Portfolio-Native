@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView, Linking } from "react-native";
+import { Link } from 'expo-router';
 
 const projects = [
   {
@@ -40,12 +41,11 @@ export default function Projects() {
               <Text style={styles.description}>{project.description}</Text>
 
               {project.Type === "link" && (
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => console.log("navigate to", project.github)}
-                >
-                  <Text style={styles.buttonText}>Acessar</Text>
-                </TouchableOpacity>
+                <Link href="/forca" asChild>
+                  <TouchableOpacity style={styles.button}>
+                    <Text style={styles.buttonText}>Acessar</Text>
+                  </TouchableOpacity>
+                </Link>
               )}
 
               {project.Type === "a" && (
